@@ -150,43 +150,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 19
  await testRunner.GivenAsync("the hotel has the following hotel rooms:", ((string)(null)), table1, "Given ");
 #line hidden
-#line 28
- await testRunner.AndAsync("a user wants to books a hotel room with a checkIn date of \"17/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 29
- await testRunner.AndAsync("a checkOut date of \"19/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 30
- await testRunner.AndAsync("selects 2 adults", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 31
- await testRunner.AndAsync("1 child", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 35
- await testRunner.WhenAsync("the user searches for a hotel room", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "RoomNo",
-                            "Type",
-                            "MaxOccupancy",
-                            "PricePerNight"});
+                            "GuestNo",
+                            "CheckInDate",
+                            "CheckOutDate"});
                 table2.AddRow(new string[] {
-                            "104",
-                            "Double",
-                            "3",
-                            "�180"});
+                            "101",
+                            "2001",
+                            "17/05/2025",
+                            "20/05/2025"});
                 table2.AddRow(new string[] {
-                            "105",
-                            "Double",
-                            "3",
-                            "�180"});
-                table2.AddRow(new string[] {
-                            "106",
-                            "Suite",
-                            "4",
-                            "�250"});
+                            "103",
+                            "2023",
+                            "14/05/2025",
+                            "20/05/2025"});
+#line 28
+ await testRunner.AndAsync("the following bookings already exist:", ((string)(null)), table2, "And ");
+#line hidden
+#line 33
+ await testRunner.AndAsync("the user specifies a checkIn date of \"17/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 34
+ await testRunner.AndAsync("the user specifies a checkOut date of \"18/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
 #line 38
- await testRunner.ThenAsync("the user should be informed that the available rooms are:", ((string)(null)), table2, "Then ");
+ await testRunner.WhenAsync("the user submits the search request", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "RoomNo",
@@ -194,22 +183,45 @@ this.ScenarioInitialize(scenarioInfo);
                             "MaxOccupancy",
                             "PricePerNight"});
                 table3.AddRow(new string[] {
-                            "101",
-                            "Single",
-                            "1",
-                            "�140"});
-                table3.AddRow(new string[] {
                             "102",
                             "Single",
                             "1",
                             "�140"});
                 table3.AddRow(new string[] {
+                            "104",
+                            "Double",
+                            "3",
+                            "�180"});
+                table3.AddRow(new string[] {
+                            "105",
+                            "Double",
+                            "3",
+                            "�180"});
+                table3.AddRow(new string[] {
+                            "106",
+                            "Suite",
+                            "4",
+                            "�250"});
+#line 41
+ await testRunner.ThenAsync("the user should be informed that the available rooms are:", ((string)(null)), table3, "Then ");
+#line hidden
+                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                            "RoomNo",
+                            "Type",
+                            "MaxOccupancy",
+                            "PricePerNight"});
+                table4.AddRow(new string[] {
+                            "101",
+                            "Single",
+                            "1",
+                            "�140"});
+                table4.AddRow(new string[] {
                             "103",
                             "Double",
                             "2",
                             "�180"});
-#line 44
- await testRunner.ButAsync("the user should not be offered the following rooms:", ((string)(null)), table3, "But ");
+#line 48
+ await testRunner.ButAsync("the user should not be offered the following rooms:", ((string)(null)), table4, "But ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

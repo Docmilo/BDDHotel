@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using BBDTest.Models;
 using BBDTest.Services;
 using Reqnroll;
 
@@ -10,9 +11,11 @@ namespace ReqnrollProject1.StepDefinitions
     {
         // Some data required for our step definitions
         private readonly RoomSearchService _roomSearchService = new();
-        private DateOnly _checkInDate;
-        private DateOnly _checkOutDate;
+        private SearchCriteria _searchCriteria = new();
+        //private DateOnly _checkInDate;
+        //private DateOnly _checkOutDate;
         private string _errorMessage = String.Empty;
+
 
         [Given("the user is on the hotel booking page")]
         public void GivenTheUserIsOnTheHotelBookingPage()
@@ -23,19 +26,18 @@ namespace ReqnrollProject1.StepDefinitions
         [When("the user specifies a checkIn date of {string}")]
         public void WhenTheUserSpecifiesACheckInDateOf(string checkInDate)
         {
-            _checkInDate = DateOnly.Parse(checkInDate, new CultureInfo("en-GB"));
+            //_checkInDate = DateOnly.Parse(checkInDate, new CultureInfo("en-GB"));
+            _searchCriteria.CheckInDate = DateOnly.Parse(checkInDate, new CultureInfo("en-GB"));
+        
         }
 
         [When("the user specifies a checkOut date of {string}")]
         public void WhenTheUserSpecifiesACheckOutDateOf(string checkOutDate)
         {
-            _checkOutDate = DateOnly.Parse(checkOutDate, new CultureInfo("en-GB"));
-        }
+            //_checkOutDate = DateOnly.Parse(checkOutDate, new CultureInfo("en-GB"));
+            _searchCriteria.CheckOutDate = DateOnly.Parse(checkOutDate, new CultureInfo("en-GB"));
 
-        [When("the user submits the search request")]
-        public void WhenTheUserSubmitsTheSearchRequest()
-        {
-            if (_checkOutDate <= _checkInDate)
+            if (_searchCriteria.CheckOutDate <= _searchCriteria.CheckInDate)
             {
                 _roomSearchService.EnableSearch = false;
                 _errorMessage = "Check-out date must be after check-in date.";
@@ -43,10 +45,11 @@ namespace ReqnrollProject1.StepDefinitions
             else
             {
                 _roomSearchService.EnableSearch = true;
+                _roomSearchService.Search(_searchCriteria);
             }
-
         }
 
+       
         [Then("generate the error message {string}")]
         public void ThenGenerateTheErrorMessage(string expectedErrorMessage)
         {

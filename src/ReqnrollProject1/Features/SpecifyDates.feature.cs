@@ -121,9 +121,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 24
  await testRunner.AndAsync("the user specifies a checkOut date of \"16/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 25
- await testRunner.AndAsync("the user submits the search request", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
 #line 30
  await testRunner.ThenAsync("generate the error message \"Check-out date must be after check-in date.\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
@@ -161,9 +158,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 37
  await testRunner.AndAsync("the user specifies a checkOut date of \"18/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 38
- await testRunner.AndAsync("the user submits the search request", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
 #line 39
  await testRunner.ThenAsync("enable the search", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
@@ -174,9 +168,9 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.SkippableTheoryAttribute(DisplayName="User enters various dates")]
         [Xunit.TraitAttribute("FeatureTitle", "Specify dates")]
         [Xunit.TraitAttribute("Description", "User enters various dates")]
-        [Xunit.InlineDataAttribute("\"12/12/2025\"", "\"13/12/2025\"", "true", new string[0])]
-        [Xunit.InlineDataAttribute("\"12/12/2025\"", "\"12/12/2025\"", "false", new string[0])]
-        [Xunit.InlineDataAttribute("\"13/06/2025\"", "\"12/06/2025\"", "false", new string[0])]
+        [Xunit.InlineDataAttribute("12/12/2025", "13/12/2025", "true", new string[0])]
+        [Xunit.InlineDataAttribute("12/12/2025", "12/12/2025", "false", new string[0])]
+        [Xunit.InlineDataAttribute("13/06/2025", "12/06/2025", "false", new string[0])]
         public async System.Threading.Tasks.Task UserEntersVariousDates(string checkIn, string checkOut, string enableSearch, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -203,9 +197,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 46
   await testRunner.AndAsync(string.Format("the user specifies a checkOut date of {0}", checkOut), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 47
-  await testRunner.AndAsync("the user submits the search request", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 48
   await testRunner.ThenAsync(string.Format("the IsEnabled state search should be \'{0}\'", enableSearch), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
