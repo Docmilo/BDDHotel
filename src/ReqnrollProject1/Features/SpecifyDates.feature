@@ -31,10 +31,24 @@ Scenario: User enters a checkout date that is before a valid checkin date
 	And disable the search
 	
 
-@mytag
 Scenario: User enters a checkout date that is after a valid checkin date
 	Given the user is on the hotel booking page
 	When the user specifies a checkIn date of "17/05/2025"
 	And the user specifies a checkOut date of "18/05/2025"
 	And the user submits the search request
 	Then enable the search
+
+# Combine the two scenarios into a scenario outline
+
+Scenario Outline: User enters various dates
+  Given the user is on the hotel booking page
+  When the user specifies a checkIn date of <checkIn> 
+  And the user specifies a checkOut date of <checkOut>
+  And the user submits the search request
+  Then the IsEnabled state search should be '<enableSearch>'
+
+  Examples:
+    | checkIn		| checkOut		| enableSearch	|
+    | "12/12/2025"	| "13/12/2025"	| true			|
+    | "12/12/2025"	| "12/12/2025"	| false			|
+	| "13/06/2025"	| "12/06/2025"	| false			|

@@ -66,5 +66,12 @@ namespace ReqnrollProject1.StepDefinitions
             Assert.True(_roomSearchService.EnableSearch);
         }
 
+        [Then("the IsEnabled state search should be {string}")]
+        public void ThenTheIsEnabledStateSearchShouldBe(string state)
+        {
+            Assert.Equal(Convert.ToBoolean(state), _roomSearchService.EnableSearch);
+        }
+
+
     }
 }
