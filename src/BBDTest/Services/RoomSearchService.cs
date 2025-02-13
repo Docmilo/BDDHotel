@@ -7,9 +7,11 @@ using BBDTest.Models;
 
 namespace BBDTest.Services
 {
-    public static class RoomSearchService
+    public class RoomSearchService
     {
-        public static List<HotelRoom> Search(List<HotelRoom> hotelRooms, SearchCriteria searchCriteria)
+        //public bool EnableSearch { get; set;} = false;
+        public bool EnableSearch { get; set;}
+        public List<HotelRoom> Search(List<HotelRoom> hotelRooms, SearchCriteria searchCriteria)
         {
             throw new NotImplementedException();
         }

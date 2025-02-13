@@ -11,6 +11,8 @@ namespace ReqnrollProject1.StepDefinitions
     {
 
         // Setup some fields for the step definitions
+
+        private readonly RoomSearchService _roomSearchService = new();
         private List<HotelRoom> _hotelRooms = new();
         private List<HotelRoom> _suitableRooms = new();
         private SearchCriteria _searchCriteria = new();
@@ -32,13 +34,13 @@ namespace ReqnrollProject1.StepDefinitions
         [Given("a user wants to books a hotel room with a checkIn date of {string}")]
         public void GivenAUserWantsToBooksAHotelRoomWithACheckInDateOf(string checkInDate)
         {
-            _searchCriteria.CheckIn = DateOnly.Parse(checkInDate, new CultureInfo("en-GB"));
+            _searchCriteria.CheckInDate = DateOnly.Parse(checkInDate, new CultureInfo("en-GB"));
         }
 
         [Given("a checkOut date of {string}")]
         public void GivenACheckOutDateOf(string checkOutDate)
         {
-            _searchCriteria.CheckOut = DateOnly.Parse(checkOutDate, new CultureInfo("en-GB"));
+            _searchCriteria.CheckOutDate = DateOnly.Parse(checkOutDate, new CultureInfo("en-GB"));
         }
 
 
@@ -57,7 +59,7 @@ namespace ReqnrollProject1.StepDefinitions
         [When("the user searches for a hotel room")]
         public void WhenTheUserSearchesForAHotelRoom()
         {
-            _suitableRooms = RoomSearchService.Search(_hotelRooms, _searchCriteria);    
+            _suitableRooms = _roomSearchService.Search(_hotelRooms, _searchCriteria);    
         }
 
         [Then("the user should be informed that the available rooms are:")]

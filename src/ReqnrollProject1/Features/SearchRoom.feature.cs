@@ -19,21 +19,21 @@ namespace ReqnrollProject1.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class SearchForAHotelRoomFeature : object, Xunit.IClassFixture<SearchForAHotelRoomFeature.FixtureData>, Xunit.IAsyncLifetime
+    public partial class CheckRoomAvailabilityFeature : object, Xunit.IClassFixture<CheckRoomAvailabilityFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search for a hotel room", "A simple set of scenarios for searching for a hotel room", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Check room availability", "A simple set of scenarios for searching for a hotel room", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "SearchRoom.feature"
 #line hidden
         
-        public SearchForAHotelRoomFeature(SearchForAHotelRoomFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CheckRoomAvailabilityFeature(CheckRoomAvailabilityFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -93,7 +93,7 @@ namespace ReqnrollProject1.Features
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="User enters valid dates")]
-        [Xunit.TraitAttribute("FeatureTitle", "Search for a hotel room")]
+        [Xunit.TraitAttribute("FeatureTitle", "Check room availability")]
         [Xunit.TraitAttribute("Description", "User enters valid dates")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public async System.Threading.Tasks.Task UserEntersValidDates()
@@ -102,7 +102,7 @@ namespace ReqnrollProject1.Features
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User enters valid dates", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
+#line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -147,22 +147,22 @@ this.ScenarioInitialize(scenarioInfo);
                             "Suite",
                             "4",
                             "�250"});
-#line 9
+#line 19
  await testRunner.GivenAsync("the hotel has the following hotel rooms:", ((string)(null)), table1, "Given ");
 #line hidden
-#line 17
+#line 28
  await testRunner.AndAsync("a user wants to books a hotel room with a checkIn date of \"17/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 29
  await testRunner.AndAsync("a checkOut date of \"19/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 30
  await testRunner.AndAsync("selects 2 adults", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 31
  await testRunner.AndAsync("1 child", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 35
  await testRunner.WhenAsync("the user searches for a hotel room", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
@@ -185,8 +185,31 @@ this.ScenarioInitialize(scenarioInfo);
                             "Suite",
                             "4",
                             "�250"});
-#line 23
+#line 38
  await testRunner.ThenAsync("the user should be informed that the available rooms are:", ((string)(null)), table2, "Then ");
+#line hidden
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "RoomNo",
+                            "Type",
+                            "MaxOccupancy",
+                            "PricePerNight"});
+                table3.AddRow(new string[] {
+                            "101",
+                            "Single",
+                            "1",
+                            "�140"});
+                table3.AddRow(new string[] {
+                            "102",
+                            "Single",
+                            "1",
+                            "�140"});
+                table3.AddRow(new string[] {
+                            "103",
+                            "Double",
+                            "2",
+                            "�180"});
+#line 44
+ await testRunner.ButAsync("the user should not be offered the following rooms:", ((string)(null)), table3, "But ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -199,12 +222,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await SearchForAHotelRoomFeature.FeatureSetupAsync();
+                await CheckRoomAvailabilityFeature.FeatureSetupAsync();
             }
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.DisposeAsync()
             {
-                await SearchForAHotelRoomFeature.FeatureTearDownAsync();
+                await CheckRoomAvailabilityFeature.FeatureTearDownAsync();
             }
         }
     }
