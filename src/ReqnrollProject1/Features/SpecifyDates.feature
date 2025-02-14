@@ -42,8 +42,8 @@ Scenario: User enters a checkout date that is after a valid checkin date
 
 Scenario Outline: User enters various dates
   Given the user is on the hotel booking page
-  When the user specifies a checkIn date of <checkIn> 
-  And the user specifies a checkOut date of <checkOut>
+  When the user specifies a checkIn date of '<checkIn>' 
+  And the user specifies a checkOut date of '<checkOut>'
   #And the user submits the search request
   Then the IsEnabled state search should be '<enableSearch>'
 

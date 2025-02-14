@@ -3,6 +3,7 @@ using System.Globalization;
 using BBDTest.Models;
 using BBDTest.Services;
 using Reqnroll;
+using System.Linq;
 
 namespace ReqnrollProject1.StepDefinitions
 {
@@ -11,15 +12,8 @@ namespace ReqnrollProject1.StepDefinitions
     {
         // Setup some fields for the step definitions
         private readonly RoomSearchService _roomSearchService = new();
-        private List<HotelRoom> _suitableRooms = new();
-        private SearchCriteria _searchCriteria = new();
-
-        private readonly ScenarioContext _scenarioContext;
-
-        public CheckRoomAvailabilityStepDefinitions(ScenarioContext scenarioContext)
-        {
-            _scenarioContext = scenarioContext;
-        }
+        private readonly List<HotelRoom> _suitableRooms = [];
+        private readonly SearchCriteria _searchCriteria = new();
 
         [Given("the hotel has the following hotel rooms:")]
         public void GivenTheHotelHasTheFollowingHotelRooms(DataTable hotelRooms)
@@ -28,6 +22,9 @@ namespace ReqnrollProject1.StepDefinitions
             _roomSearchService.Rooms.Clear();
             // 	| RoomNo | Type   | MaxOccupancy | PricePerNight |
             var rooms = hotelRooms.CreateSet<(int roomNo, RoomType roomType, int maxOccupancy, decimal price)>();
+            _roomSearchService.Rooms.AddRange(from room in rooms
+                                              select new HotelRoom(room.roomNo, room.roomType, room.maxOccupancy, room.price));
+
             foreach (var room in rooms)
             {
                 _roomSearchService.Rooms.Add(new HotelRoom(room.roomNo, room.roomType, room.maxOccupancy, room.price));
@@ -79,24 +76,25 @@ namespace ReqnrollProject1.StepDefinitions
         public void ThenTheUserShouldBeInformedThatTheAvailableRoomsAre(DataTable availableRooms)
         {
             var rooms = availableRooms.CreateSet<(int roomNo, RoomType roomType, int maxOccupancy, decimal price)>();
-            List<HotelRoom> expectedRooms = new();
+            List<HotelRoom> expectedRooms = [];
             foreach (var room in rooms)
             {
                 expectedRooms.Add(new HotelRoom(room.roomNo, room.roomType, room.maxOccupancy, room.price));
             }
-            Assert.Equal(expectedRooms, _roomSearchService.Search(_searchCriteria));
+            List<HotelRoom> actualRooms = _roomSearchService.Search(_searchCriteria);
+            Assert.Equivalent(expectedRooms, actualRooms);
          }
 
         [Then("the user should not be offered the following rooms:")]
         public void ThenTheUserShouldNotBeOfferedTheFollowingRooms(DataTable unAvailableRooms)
         {
             var rooms = unAvailableRooms.CreateSet<(int roomNo, RoomType roomType, int maxOccupancy, decimal price)>();
-            List<HotelRoom> expectedRooms = new();
+            List<HotelRoom> expectedRooms = [];
             foreach (var room in rooms)
             {
                 expectedRooms.Add(new HotelRoom(room.roomNo, room.roomType, room.maxOccupancy, room.price));
             }
-            Assert.Equal(expectedRooms, _roomSearchService.Search(_searchCriteria));
+            Assert.Equivalent(expectedRooms, _roomSearchService.SearchUnavailableRooms(_searchCriteria));
         }
 
 

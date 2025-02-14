@@ -193,10 +193,10 @@ this.ScenarioInitialize(scenarioInfo);
   await testRunner.GivenAsync("the user is on the hotel booking page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 45
-  await testRunner.WhenAsync(string.Format("the user specifies a checkIn date of {0}", checkIn), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+  await testRunner.WhenAsync(string.Format("the user specifies a checkIn date of \'{0}\'", checkIn), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 46
-  await testRunner.AndAsync(string.Format("the user specifies a checkOut date of {0}", checkOut), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync(string.Format("the user specifies a checkOut date of \'{0}\'", checkOut), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 48
   await testRunner.ThenAsync(string.Format("the IsEnabled state search should be \'{0}\'", enableSearch), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

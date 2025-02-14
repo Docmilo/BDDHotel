@@ -11,7 +11,7 @@ namespace ReqnrollProject1.StepDefinitions
     {
         // Some data required for our step definitions
         private readonly RoomSearchService _roomSearchService = new();
-        private SearchCriteria _searchCriteria = new();
+        private readonly SearchCriteria _searchCriteria = new();
         //private DateOnly _checkInDate;
         //private DateOnly _checkOutDate;
         private string _errorMessage = String.Empty;
@@ -49,7 +49,7 @@ namespace ReqnrollProject1.StepDefinitions
             }
         }
 
-       
+     
         [Then("generate the error message {string}")]
         public void ThenGenerateTheErrorMessage(string expectedErrorMessage)
         {
