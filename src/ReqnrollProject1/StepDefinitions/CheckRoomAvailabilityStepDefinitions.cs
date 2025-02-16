@@ -59,7 +59,6 @@ namespace ReqnrollProject1.StepDefinitions
         [When("the user submits the search request")]
         public void WhenTheUserSubmitsTheSearchRequest()
         {
-            //if (_checkOutDate <= _checkInDate)
             if (_searchCriteria.CheckOutDate <= _searchCriteria.CheckInDate)
             {
                 _roomSearchService.EnableSearch = false;
@@ -69,7 +68,6 @@ namespace ReqnrollProject1.StepDefinitions
                 _roomSearchService.EnableSearch = true;
                 _roomSearchService.Search(_searchCriteria);
             }
-
         }
 
         [Then("the user should be informed that the available rooms are:")]
@@ -96,8 +94,5 @@ namespace ReqnrollProject1.StepDefinitions
             }
             Assert.Equivalent(expectedRooms, _roomSearchService.SearchUnavailableRooms(_searchCriteria));
         }
-
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿Feature: Specify dates
 
-A simple set of scenarios for searching for a hotel room
+A simple set of scenarios for specifying dates for a stay at a hotel.
 
 # Features are software features that we want to create in code. 
 # Feature files are our BDD executable specification.
@@ -9,10 +9,10 @@ Rule: The CheckIn date should be before the CheckOut date
 # Rules represent business rules that should be implemented. 
 # Rules group together sevreal scenarios that illustate the rule. 
 
-@mytag
 Scenario: User enters a checkout date that is before a valid checkin date
-# Example: User enters valid dates
+# Example: User enters a checkout date that is before a valid checkin date
 # Screnarios / examples are concrete examples that illustrate the rule.
+# We can use either the keyword Scenario or Example
 # Scenarios contain a list of steps
 
 	# Given - describes the initial context of the system, like Arrange in TDD.

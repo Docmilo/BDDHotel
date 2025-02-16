@@ -26,7 +26,8 @@ namespace ReqnrollProject1.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Check room availability", "A simple set of scenarios for searching for a hotel room", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Check room availability", "A simple set of scenarios for searching for an available hotel room on specified " +
+                "dates", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -95,14 +96,12 @@ namespace ReqnrollProject1.Features
         [Xunit.SkippableFactAttribute(DisplayName="User enters valid dates")]
         [Xunit.TraitAttribute("FeatureTitle", "Check room availability")]
         [Xunit.TraitAttribute("Description", "User enters valid dates")]
-        [Xunit.TraitAttribute("Category", "mytag")]
         public async System.Threading.Tasks.Task UserEntersValidDates()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User enters valid dates", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -147,7 +146,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Suite",
                             "4",
                             "�250"});
-#line 19
+#line 18
  await testRunner.GivenAsync("the hotel has the following hotel rooms:", ((string)(null)), table1, "Given ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
@@ -165,16 +164,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "2023",
                             "14/05/2025",
                             "20/05/2025"});
-#line 28
+#line 27
  await testRunner.AndAsync("the following bookings already exist:", ((string)(null)), table2, "And ");
 #line hidden
-#line 33
+#line 32
  await testRunner.AndAsync("the user specifies a checkIn date of \"17/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 33
  await testRunner.AndAsync("the user specifies a checkOut date of \"18/05/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 38
+#line 37
  await testRunner.WhenAsync("the user submits the search request", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
@@ -202,7 +201,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Suite",
                             "4",
                             "�250"});
-#line 41
+#line 40
  await testRunner.ThenAsync("the user should be informed that the available rooms are:", ((string)(null)), table3, "Then ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
@@ -220,7 +219,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Double",
                             "2",
                             "�180"});
-#line 48
+#line 47
  await testRunner.ButAsync("the user should not be offered the following rooms:", ((string)(null)), table4, "But ");
 #line hidden
             }

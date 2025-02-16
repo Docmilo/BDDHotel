@@ -26,7 +26,7 @@ namespace ReqnrollProject1.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Specify dates", "A simple set of scenarios for searching for a hotel room", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Specify dates", "A simple set of scenarios for specifying dates for a stay at a hotel.", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -95,14 +95,12 @@ namespace ReqnrollProject1.Features
         [Xunit.SkippableFactAttribute(DisplayName="User enters a checkout date that is before a valid checkin date")]
         [Xunit.TraitAttribute("FeatureTitle", "Specify dates")]
         [Xunit.TraitAttribute("Description", "User enters a checkout date that is before a valid checkin date")]
-        [Xunit.TraitAttribute("Category", "mytag")]
         public async System.Threading.Tasks.Task UserEntersACheckoutDateThatIsBeforeAValidCheckinDate()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User enters a checkout date that is before a valid checkin date", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))

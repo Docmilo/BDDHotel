@@ -1,6 +1,6 @@
 Feature: Check room availability
 
-A simple set of scenarios for searching for a hotel room
+A simple set of scenarios for searching for an available hotel room on specified dates
 
 # Features are software features that we want to create in code. 
 # Feature files are our BDD executable specification.
@@ -9,7 +9,6 @@ Rule: Only rooms that are available on the selected dates should be offered to g
 # Rules represent business rules that should be implemented. 
 # Rules group together sevreal scenarios that illustate the rule. 
 
-@mytag
 Scenario: User enters valid dates
 # Example: User enters valid dates
 # Screnarios / examples are concrete examples that illustrate the rule.
